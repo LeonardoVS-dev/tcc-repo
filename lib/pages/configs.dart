@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class paginaDeHistorico extends StatefulWidget {
-  const paginaDeHistorico({super.key});
+class paginaConfig extends StatefulWidget {
+  const paginaConfig({super.key});
 
   @override
-  State<paginaDeHistorico> createState() => _paginaDeHistoricoState();
+  State<paginaConfig> createState() => _paginaConfigState();
 }
 
-class _paginaDeHistoricoState extends State<paginaDeHistorico> {
+class _paginaConfigState extends State<paginaConfig> {
   @override
   Widget build(BuildContext context) {
     return Builder(
@@ -22,15 +22,20 @@ class _paginaDeHistoricoState extends State<paginaDeHistorico> {
                     onPressed: () {
                       Navigator.pushNamed(context, '/index');
                     },
-                    icon: const Icon(Icons.arrow_back),
+                    icon: const Icon(Icons.arrow_back, color: Colors.white,),
                   ),
                   title: const Text(
-                    'Histórico de informações',
+                    'Configurações',
                     style: TextStyle(
                       color: Colors.white,
                     ),
                   ),
                   backgroundColor: const Color.fromARGB(255, 59, 52, 52),
+                ),
+                Expanded(
+
+                  //aqui
+                  child: Container(),
                 ),
               ],
             ),

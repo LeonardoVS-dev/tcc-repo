@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'globals.dart' as globals;
 
+
 class loginPage extends StatefulWidget {
   const loginPage({super.key});
 
@@ -11,6 +12,11 @@ class loginPage extends StatefulWidget {
 class _loginPageState extends State<loginPage> {
   final _controladorSenha = TextEditingController();
   final _controladorEmail = TextEditingController();
+  double height = 22;
+  
+  initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext contextLoginPage) {
@@ -22,55 +28,56 @@ class _loginPageState extends State<loginPage> {
           },
           child: Scaffold(
             body: SafeArea(
-              child: Container(
-                margin: const EdgeInsets.only(left: 20, right: 20),
-                child: Center(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                              
-                      children: [
-                        Container(
-                          child: Image.asset(
-                            'assets/images/image-removebg-preview(1).png'),
-                        ),
-                        Container(
-                          child: const Text(
-                            'Faça o login:',
-                            style: TextStyle(color: Colors.white, fontSize: 24),
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 10, top: 20),
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
+              child: Center(
+                child: FractionallySizedBox(
+                  widthFactor: 0.80,
+                  child: Container(
+                    margin: const EdgeInsets.only(left: 20, right: 20),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                                
+                        children: [
+                          /*Container(
+                            child: Image.asset(
+                              'assets/images/image-removebg-preview(1).png'),
+                          ),*/
+                          Container(
+                            child: const Text(
+                              'Faça o login:',
+                              style: TextStyle(color: Colors.white, fontSize: 24),
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: TextField(
-                                controller: _controladorEmail,
-                                obscureText: false,
-                              
-                                decoration: InputDecoration(
-                                  prefixIcon: const Icon(Icons.account_circle),
-                                  iconColor: Colors.black,
-                                  labelText: 'Email',
-                                  suffixIcon: IconButton(
-                                    onPressed: () {
-                                      _controladorEmail.clear();
-                                    },
-                                    icon: const Icon(Icons.clear),
-                                  )
+                          ),
+                          SizedBox(height: height,),
+                          Container(
+                            margin: const EdgeInsets.only(bottom: 15,),
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: TextField(
+                                  controller: _controladorEmail,
+                                  obscureText: false,
+                                
+                                  decoration: InputDecoration(
+                                    prefixIcon: const Icon(Icons.account_circle),
+                                    iconColor: Colors.black,
+                                    labelText: 'Email',
+                                    suffixIcon: IconButton(
+                                      onPressed: () {
+                                        _controladorEmail.clear();
+                                      },
+                                      icon: const Icon(Icons.clear),
+                                    )
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 10),
-                          child: Card(
+                          Card(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -95,10 +102,8 @@ class _loginPageState extends State<loginPage> {
                               ),
                             ),
                           ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 20),
-                          child: ElevatedButton(
+                          SizedBox(height: height,),
+                          ElevatedButton(
                             onPressed: () {
                               if(_controladorEmail.text == '' || _controladorSenha == '') {
                                 showDialog(
@@ -123,7 +128,8 @@ class _loginPageState extends State<loginPage> {
                                 Navigator.pushNamed(
                                   contextLoginPage, '/index',
                                   arguments: globals.emailUsuario = _controladorEmail.text,
-                                )
+                                ),
+                                //Navigator.pop(context)
                               );
                               }
                             },
@@ -143,15 +149,19 @@ class _loginPageState extends State<loginPage> {
                                 Colors.redAccent[700],
                               ),
                             ),
-                            child: const Text(
-                              "Entrar",
-                              style: TextStyle(
-                                fontSize: 19,
+                            child: Container(
+                              margin: const EdgeInsets.only(bottom: 5,top: 5),
+                              child: const Text(
+                                "Entrar",
+                                style: TextStyle(
+                                  fontSize: 19,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
